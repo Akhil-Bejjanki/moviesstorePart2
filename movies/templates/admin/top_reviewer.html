@@ -1,0 +1,17 @@
+{% extends "admin/base_site.html" %}
+{% block beg %}
+<div class = "beg">
+    <a href = "{% url 'admin:index' %}"> Home</a> Top Reviewer
+</div>
+{% endblock %}
+
+{% block content %}
+<div id = "main-content" style = "padding: 25px;">
+    {% if top_user %}
+    <p> Username: {{top_user.user__username}} </p>
+    <p> Total Reviews: {{top_user.total_reviews}} </p>
+    {% else %}
+        <p> No reviews exist.</p>
+    {% endif %}
+</div>
+{% endblock %}

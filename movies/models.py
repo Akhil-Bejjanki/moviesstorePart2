@@ -17,3 +17,10 @@ class Review(models.Model):
     reported = models.BooleanField(default = False)
     def __str__(self):
         return str(self.id) + ' - ' + self.movie.name
+
+class TopReviewer(Review):
+    class Meta:
+        proxy = True
+        verbose_name = "Top Reviewer"
+        # if there is multiple people tied
+        verbose_name_plural = "Top Reviewers"
