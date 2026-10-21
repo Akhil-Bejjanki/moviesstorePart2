@@ -18,7 +18,9 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
+from movies.admin_views import movie_stats
 urlpatterns = [
+    path('admin/movie-stats/', admin.site.admin_view(movie_stats), name = 'admin.movie_stats'),
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
     path('movies/', include('movies.urls')),
