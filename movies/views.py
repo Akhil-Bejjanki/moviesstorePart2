@@ -71,9 +71,5 @@ def report_review(request, id, review_id):
 def rate_movie(request, id):
     if request.method == 'POST' and request.POST['stars'] != '':
         movie = Movie.objects.get(id=id)
-        rating = Ratings()
-        rating.stars = request.POST['stars']
-        rating.movie = movie
-        rating.user = request.user
-        rating.save()
+        Ratings.objects.update_or_create(movie=movie, user=request.user, defaults={'stars': request.POST['stars']})
     return redirect('movies.show', id=id)
