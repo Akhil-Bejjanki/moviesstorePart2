@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.db.models import Count
 from django.shortcuts import render
-from .models import Movie, Review, TopReviewer
+from .models import Movie, Review, TopReviewer, Ratings
 class MovieAdmin(admin.ModelAdmin):
     ordering = ['name']
     search_fields = ['name']
@@ -20,4 +20,5 @@ class TopReviewerAdmin(admin.ModelAdmin):
 admin.site.register(Movie, MovieAdmin)
 admin.site.register(Review)
 admin.site.register(TopReviewer, TopReviewerAdmin)
+admin.site.register(Ratings)
 

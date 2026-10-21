@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Movie, Review
+from .models import Movie, Review, Ratings
+from django.db.models import Avg
 from django.contrib.auth.decorators import login_required
 def index(request):
     search_term = request.GET.get('search')
@@ -18,6 +19,10 @@ def show(request, id):
     template_data['title'] = movie.name
     template_data['movie'] = movie
     template_data['reviews'] = reviews
+    ratings = Ratings.objects.filter(movie=movie)
+    template_data['average_rating'] = ratings.aggregate(Avg('stars'))['stars__avg']
+    template_data['rating_count'] = ratings.count()
+    template_data['user_rating'] = ratings.filter(user=request.user).first()
     return render(request, 'movies/show.html', {'template_data': template_data})
 @login_required
 def create_review(request, id):
@@ -61,4 +66,14 @@ def report_review(request, id, review_id):
         return redirect('movies.show', id=id)
     review.reported = True
     review.save()
+    return redirect('movies.show', id=id)
+@login_required
+def rate_movie(request, id):
+    if request.method == 'POST' and request.POST['stars'] != '':
+        movie = Movie.objects.get(id=id)
+        rating = Ratings()
+        rating.stars = request.POST['stars']
+        rating.movie = movie
+        rating.user = request.user
+        rating.save()
     return redirect('movies.show', id=id)
