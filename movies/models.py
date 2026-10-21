@@ -24,3 +24,9 @@ class TopReviewer(Review):
         verbose_name = "Top Reviewer"
         # if there is multiple people tied
         verbose_name_plural = "Top Reviewers"
+
+class MovieStats(Movie):
+    class Meta:
+        proxy = True
+        verbose_name = "Movie Stats"
+        verbose_name_plural = "Movie Stats"

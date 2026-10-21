@@ -1,7 +1,7 @@
 {% extends "admin/base_site.html" %}
 {% block breadcrumbs %}
 <div class = "breadcrumbs">
-    <a href = "{% url 'admin:index' %}"> Home</a & rsaquo> Movie Statistics
+    <a href = "{% url 'admin:index' %}"> Home</a> &rsaquo; Movie Statistics
 </div>
 {% endblock %}
 
@@ -11,7 +11,7 @@
         <table style = "width: 100%;">
             <caption>Most Purchased Movie</caption>
             <thead>
-                <tr><th>Times Bought</th></tr>
+                <tr><th>Movie</th><th>Times Bought</th></tr>
             </thead>
             <tbody>
                 {% for movie in template_data.most_bought %}
@@ -26,7 +26,7 @@
         <table style = "width: 100%;">
             <caption>Most Reviewed Movie</caption>
             <thead>
-                <tr><th>Times Reviewed</th></tr>
+                <tr><th>Movie</th><th>Times Reviewed</th></tr>
             </thead>
             <tbody>
                 {% for movie in template_data.most_reviewed %}
