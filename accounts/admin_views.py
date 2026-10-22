@@ -19,4 +19,4 @@ def top_customers(request):
         "size": size or ''
     }
 
-    return render(request, "accounts/admin/top_customers.html", context)
+    return render(request, "admin/top_customers.html", context)
