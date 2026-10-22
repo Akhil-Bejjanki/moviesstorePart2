@@ -11,7 +11,7 @@
         <p><b>Price:</b> ${{template_data.movie.price }}</p>
         <p><b>Average Rating</b>
          {% if template_data.average_rating %}
-         {{ template_data.average_rating|floatformat:1 }} / 5 ({{ templaate_data.rating_count }} ratings)
+         {{ template_data.average_rating|floatformat:1 }} / 5 ({{ template_data.rating_count }} ratings)
          {% else %}
          No ratings have been posted yet.
          {% endif %}
