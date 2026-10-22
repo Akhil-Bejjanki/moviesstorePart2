@@ -19,12 +19,15 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 from movies.admin_views import movie_stats
+from accounts.admin_views import top_customers
 urlpatterns = [
     path('admin/movie-stats/', admin.site.admin_view(movie_stats), name = 'admin.movie_stats'),
+    path('admin/top-customers/', admin.site.admin_view(top_customers), name = 'admin.top_customers'),
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
     path('movies/', include('movies.urls')),
     path('accounts/', include('accounts.urls')),
     path('cart/', include('cart.urls')),
+
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
