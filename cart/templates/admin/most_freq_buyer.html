@@ -1,0 +1,12 @@
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+<div id = 'main-content'>
+    {% if biggest_buyer %}
+    <p> Username: {{biggest_buyer.order__user__username}} </p>
+    <p> Movie Count: {{biggest_buyer.m_count}}</p>
+    {% else %}
+    <p> There have been no purchases. </p>
+    {% endif %}
+</div>
+{% endblock %}
